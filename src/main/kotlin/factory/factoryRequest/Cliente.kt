@@ -13,6 +13,10 @@ class Cliente {
 
         val getMethod = HttpRequestFactory().create("GET","https://api.example.com/clientes/$cpf", headers)
 
+        val request = getMethod?.execute()
+
+        getMethod?.executeCall(request!!)
+
         DriverManager.println("Busca cliente com CPF: $cpf: $getMethod")
 
     }
@@ -21,16 +25,25 @@ class Cliente {
 
         val headers = HeadersRequest().construirHeaders()
 
-        val body = """
-            {
-                "cpf": "$cpf",
-                "nome": "$nome"
-            }
-        """.trimIndent()
+        val body = createBody(cpf, nome)
 
         val postMethod = HttpRequestFactory().create("POST","https://api.example.com/clientes", headers, body)
 
+        val request = postMethod?.execute()
+
+        postMethod?.executeCall(request!!)
+
         DriverManager.println("Cadastro cliente com CPF: $cpf e nome: $nome: $postMethod")
 
+    }
+
+    private fun createBody(cpf: String, nome: String): String {
+        val body = """
+                {
+                    "cpf": "$cpf",
+                    "nome": "$nome"
+                }
+            """.trimIndent()
+        return body
     }
 }

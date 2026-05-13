@@ -9,14 +9,11 @@ class GetMethod(
     private val headers: Headers
 ): HttpRequest {
 
-    override fun execute() {
-        val client = OkHttpClient()
+    override fun execute(): Request {
 
-        val request = Request.Builder()
+        return Request.Builder()
             .url(url)
             .headers(headers)
             .build()
-
-        executeRequest(client, request)
     }
 }

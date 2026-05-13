@@ -5,15 +5,19 @@ import okhttp3.Request
 
 interface HttpRequest {
 
-    fun execute()
+    fun execute(): Request
 
-    fun executeRequest(client: OkHttpClient, request: Request){
-            val response = client.newCall(request).execute()
-            if (response.isSuccessful) {
-                val responseData = response.body?.string()
-                println("Response: $responseData")
-            } else {
-                println("Request failed with code: ${response.code}")
-            }
+    fun executeCall(request: Request){
+//        val client = OkHttpClient()
+//        val response = client.newCall(request).execute()
+//
+//        if (response.isSuccessful) {
+//            val responseData = response.body?.string()
+//            println("Response: $responseData")
+//        } else {
+//            println("Request failed with code: ${response.code}")
+//        }
+
+        println("Chamada executada para a request: $request")
     }
 }

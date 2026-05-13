@@ -13,15 +13,12 @@ class PostMethod(
     val dody: String
 ) : HttpRequest{
 
-    override fun execute() {
-        val client = OkHttpClient()
+    override fun execute(): Request {
 
-        val request = Request.Builder()
+       return Request.Builder()
             .url(url)
             .headers(headers)
             .post(dody.toRequestBody("application/json".toMediaTypeOrNull()))
             .build()
-
-        executeRequest(client, request)
     }
 }
