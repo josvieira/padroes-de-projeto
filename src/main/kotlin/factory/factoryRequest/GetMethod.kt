@@ -1,7 +1,6 @@
 package org.example.factory.factoryHeaders
 
 import okhttp3.Headers
-import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class GetMethod(
